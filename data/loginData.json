@@ -1,0 +1,76 @@
+[
+      { 
+        "email": "gabedavanini93@gmail.com",
+        "password": "Gabedava123@",
+        "expectedResult": "success"
+      },
+      {
+        "email": "GabeDavAninI93@gmail.com",
+        "password": "Gabedava123@",
+        "expectedResult": "success"
+      },
+      { 
+        "email": "gabedavanini93@gmail.com",
+        "password": "incorrectPassword",
+        "expectedResult": "failure",
+        "errorMessage": "Incorrect username or password."
+      },
+      { 
+        "email": "test@test.com",
+        "password": "Gabedava123@",
+        "expectedResult": "failure",
+        "errorMessage": "Incorrect username or password."
+      },
+      { 
+        "email": "test@test.com",
+        "password": "incorrectPassword",
+        "expectedResult": "failure",
+        "errorMessage": "Incorrect username or password."
+      },
+      { 
+        "email": "",
+        "password": "somepassword",
+        "expectedResult": "failure",
+        "errorMessage": "Email is required",
+        "type": "Empty fields"
+      },
+      { 
+        "email": "test@test.com",
+        "password": "",
+        "expectedResult": "failure",
+        "errorMessage": "Password is required",
+        "type": "Empty fields"      
+      },
+      { 
+        "email": "test@test",
+        "password": "incorrectPassword",
+        "expectedResult": "failure",
+        "errorMessage": "Enter valid Email address",
+        "type":"Incorrect email format"
+      },
+      { 
+        "email": "' OR '1'='1'; --",
+        "password": "incorrectPassword",
+        "expectedResult": "failure",
+        "errorMessage": "Enter valid Email address",
+        "type":"Incorrect email format"
+      },
+      { 
+        "email": "test@test.com",
+        "password": "' OR '1'='1'; --",
+        "expectedResult": "failure",
+        "errorMessage": "Incorrect username or password."
+      },
+      { 
+        "email": "test@test.com",
+        "password": "123",
+        "expectedResult": "failure",
+        "errorMessage": "Incorrect username or password."
+      },
+      { 
+        "email": "test@test.com",
+        "password": "abcdefg123",
+        "expectedResult": "failure",
+        "errorMessage": "Incorrect username or password."
+      }
+]
