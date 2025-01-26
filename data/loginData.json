@@ -69,7 +69,7 @@
       },
       { 
         "email": "",
-        "password": "somepassword",
+        "password": "Somepassword123@",
         "expectedResult": "failure",
         "errorMessage": "Email is required",
         "type": "Empty fields"
@@ -83,7 +83,7 @@
       },
       { 
         "email": "test@test",
-        "password": "incorrectPassword",
+        "password": "Somepassword123@",
         "expectedResult": "failure",
         "errorMessage": "Enter valid Email address",
         "type":"Incorrect email format"
