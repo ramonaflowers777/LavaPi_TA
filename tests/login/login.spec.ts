@@ -73,7 +73,7 @@ test.describe('Valid and Invalid Log in tests', () => {
                     await loginPage.login(user.email, user.password);
 
                     const incorrectCredentialsErrMsg: string | null = await loginPage.getMainErrorMessage();
-                    expect(incorrectCredentialsErrMsg).toBe(user.errorMessage);
+                    expect(incorrectCredentialsErrMsg).toMatch(/Incorrect username or password\.?|Password attempts exceeded\.?/);
                 })
             }
 

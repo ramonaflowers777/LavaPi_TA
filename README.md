@@ -20,6 +20,13 @@ This project is a test suite for validating the login functionality of a web app
   - data/type.ts: TypeScript interface for user data.
   - playwright/fixtures.ts: Playwright fixtures for managing authentication across tests.
 
+## Cross-Browser Testing
+
+The test suite is configured to run on the following browsers:
+- **Chromium** (Chrome)
+- **Firefox**
+- **WebKit** (Safari)
+
 ## Test Data
 The test data is stored in `loginData.json` and follows the `UserData` interface defined in `type.ts`. Each test case includes:
 
