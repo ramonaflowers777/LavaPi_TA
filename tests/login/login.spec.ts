@@ -11,8 +11,8 @@ test.describe('Valid Login tests', () => {
         await page.goto('/login');
     });
 
-    const validUsers = testData.filter((user) => user.expectedResult === 'success');
-    const invalidUsers = testData.filter((user) => user.expectedResult === 'failure');
+    const validUsers: UserData[] = testData.filter((user) => user.expectedResult === 'success');
+    const invalidUsers: UserData[] = testData.filter((user) => user.expectedResult === 'failure');
 
     test.describe('Valid Log in Tests', () => {
             validUsers.forEach((user) => {
@@ -26,40 +26,39 @@ test.describe('Valid Login tests', () => {
     test.describe('Invalid Log in Tests', () => {
         invalidUsers.forEach((user) => {
             if(user.type === 'Empty fields') {
-                test(`invalid login with empty fields (email: "${user.email}", password: "${user.password}")`, async ({page}: {page: Page}) => {
+                test(`invalid login with empty fields (email: '${user.email}', password: '${user.password}')`, async ({page}: {page: Page}) => {
                     await loginPage.login(user.email, user.password);
 
                     if(user.email === "") {
-                        //type string roa
-                        const emptyEmailErrMsg = await loginPage.getErrorMessageByText('Email is required');
-                        await expect(emptyEmailErrMsg).toBe(user.errorMessage);
+                        const emptyEmailErrMsg: string | null = await loginPage.getErrorMessageByText('Email is required');
+                        expect(emptyEmailErrMsg).toBe(user.errorMessage);
                     }
 
                     if(user.password === "") {
-                        const emptyPassErrMsg = await loginPage.getErrorMessageByText('Password is required')
-                        await expect(emptyPassErrMsg).toBe(user.errorMessage);
+                        const emptyPassErrMsg: string | null = await loginPage.getErrorMessageByText('Password is required')
+                        expect(emptyPassErrMsg).toBe(user.errorMessage);
                     }
 
-                    const isDisabled = await loginPage.isLogInBtnDisabled();
-                    await expect(isDisabled).toBeTruthy();
+                    const isDisabled: boolean | null = await loginPage.isLogInBtnDisabled();
+                    expect(isDisabled).toBeTruthy();
                 })};
 
              if(user.type === 'Incorrect email format') {
-                test(`Validation for incorrect email format (email: "${user.email}")`, async ({page}: {page: Page}) => {
+                test(`Validation for incorrect email format (email: '${user.email}')`, async ({page}: {page: Page}) => {
                     await loginPage.login(user.email, user.password);
 
-                    const inncorectEmailErrMsg = await loginPage.getErrorMessageByText('Enter valid Email address');
+                    const inncorectEmailErrMsg: string | null = await loginPage.getErrorMessageByText('Enter valid Email address');
                     console.log(inncorectEmailErrMsg);
-                    await expect(inncorectEmailErrMsg).toBe(user.errorMessage);
+                    expect(inncorectEmailErrMsg).toBe(user.errorMessage);
                     
-                    const isDisabled = await loginPage.isLogInBtnDisabled();
-                    await expect(isDisabled).toBeTruthy();
+                    const isDisabled: boolean | null = await loginPage.isLogInBtnDisabled();
+                    expect(isDisabled).toBeTruthy();
             })};
 
             test(`Invalid Log in with ${user.email} and ${user.password}` , async ({page}: { page: Page }) => {
                 await loginPage.login(user.email, user.password);
                 
-                const errMessage = await loginPage.getMainErrorMessageByText('Incorrect username or password.');
+                const errMessage: string | null = await loginPage.getMainErrorMessageByText('Incorrect username or password.');
                 expect(errMessage).toBe(user.errorMessage);
             });
         })
