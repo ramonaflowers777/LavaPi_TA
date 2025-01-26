@@ -75,7 +75,7 @@
         "type": "Empty fields"
       },
       { 
-        "email": "test@test.com",
+        "email": "GabeDavAninI93@gmail.com",
         "password": "",
         "expectedResult": "failure",
         "errorMessage": "Password is required",
@@ -90,14 +90,14 @@
       },
       { 
         "email": "user@domain!#$.com",
-        "password": "incorrectPassword",
+        "password": "incorrectPassword123@",
         "expectedResult": "failure",
         "errorMessage": "Enter valid Email address",
         "type":"Incorrect email format"
       },
       { 
         "email": "' OR '1'='1'; --",
-        "password": "incorrectPassword",
+        "password": "incorrectPassword123@",
         "expectedResult": "failure",
         "errorMessage": "Enter valid Email address",
         "type":"Incorrect email format"
