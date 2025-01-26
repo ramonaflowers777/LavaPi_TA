@@ -55,7 +55,7 @@
       },
       { 
         "email": "Gabedavanini93@gmail.com",
-        "password": "abcdefgh123",
+        "password": "abcdefgh123!",
         "expectedResult": "failure",
         "errorMessage": "Incorrect username or password.",
         "type":"Incorrect password format"
