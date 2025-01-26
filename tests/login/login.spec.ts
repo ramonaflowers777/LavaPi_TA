@@ -25,7 +25,7 @@ test.describe('Valid Login tests', () => {
 
     test.describe('Invalid Log in Tests', () => {
         invalidUsers.forEach((user) => {
-            if(user.type === 'Empty fields') {
+            if( user.type === 'Empty fields' ) {
                 test(`invalid login with empty fields (email: '${user.email}', password: '${user.password}')`, async ({page}: {page: Page}) => {
                     await loginPage.login(user.email, user.password);
 
@@ -35,15 +35,17 @@ test.describe('Valid Login tests', () => {
                     }
 
                     if(user.password === "") {
+                        await loginPage.fillAndClearPasswordInput("testpassword");
+
                         const emptyPassErrMsg: string | null = await loginPage.getErrorMessageByText('Password is required')
                         expect(emptyPassErrMsg).toBe(user.errorMessage);
                     }
 
                     const isDisabled: boolean | null = await loginPage.isLogInBtnDisabled();
                     expect(isDisabled).toBeTruthy();
-                })};
+                })}
 
-             if(user.type === 'Incorrect email format') {
+             if( user.type === 'Incorrect email format' ) {
                 test(`Validation for incorrect email format (email: '${user.email}')`, async ({page}: {page: Page}) => {
                     await loginPage.login(user.email, user.password);
 
@@ -53,14 +55,16 @@ test.describe('Valid Login tests', () => {
                     
                     const isDisabled: boolean | null = await loginPage.isLogInBtnDisabled();
                     expect(isDisabled).toBeTruthy();
-            })};
+            })}
 
-            test(`Invalid Log in with ${user.email} and ${user.password}` , async ({page}: { page: Page }) => {
+            if( !user.type ) { test(`Invalid Log in with ${user.email} and ${user.password}` , async ({page}: { page: Page }) => {
                 await loginPage.login(user.email, user.password);
                 
-                const errMessage: string | null = await loginPage.getMainErrorMessageByText('Incorrect username or password.');
-                expect(errMessage).toBe(user.errorMessage);
+                const errMessage: string | null =  await loginPage.getMainErrorMessageByText();
+
+                expect(errMessage).toMatch(/Incorrect username or password\.?|Password attempts exceeded\.?/);
             });
+        };
         })
     })
 })

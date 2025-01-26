@@ -28,6 +28,24 @@
         "errorMessage": "Incorrect username or password."
       },
       { 
+        "email": "test@test.com",
+        "password": "' OR '1'='1'; --",
+        "expectedResult": "failure",
+        "errorMessage": "Incorrect username or password."
+      },
+      { 
+        "email": "test@test.com",
+        "password": "123",
+        "expectedResult": "failure",
+        "errorMessage": "Incorrect username or password."
+      },
+      { 
+        "email": "test@test.com",
+        "password": "abcdefg123",
+        "expectedResult": "failure",
+        "errorMessage": "Incorrect username or password."
+      },
+      { 
         "email": "",
         "password": "somepassword",
         "expectedResult": "failure",
@@ -49,28 +67,17 @@
         "type":"Incorrect email format"
       },
       { 
-        "email": "' OR '1'='1'; --",
+        "email": "user@domain!#$.com",
         "password": "incorrectPassword",
         "expectedResult": "failure",
         "errorMessage": "Enter valid Email address",
         "type":"Incorrect email format"
       },
       { 
-        "email": "test@test.com",
-        "password": "' OR '1'='1'; --",
+        "email": "' OR '1'='1'; --",
+        "password": "incorrectPassword",
         "expectedResult": "failure",
-        "errorMessage": "Incorrect username or password."
-      },
-      { 
-        "email": "test@test.com",
-        "password": "123",
-        "expectedResult": "failure",
-        "errorMessage": "Incorrect username or password."
-      },
-      { 
-        "email": "test@test.com",
-        "password": "abcdefg123",
-        "expectedResult": "failure",
-        "errorMessage": "Incorrect username or password."
+        "errorMessage": "Enter valid Email address",
+        "type":"Incorrect email format"
       }
 ]
