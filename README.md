@@ -3,7 +3,7 @@
 
 ## Overview
 
-This project is a test suite for validating the login functionality of a web application. The suite includes both valid and invalid test cases, using Playwright with TypeScript and Page Object Model (POM) for better maintainability and scalability.
+The suite includes both valid and invalid test cases, leveraging Playwright, TypeScript, and the Page Object Model (POM) for improved maintainability and scalability.
 
 ## Features
 - **Page Object Model(POM)**: The LoginPage class encapsulates all login page interactions, making the tests more maintainable.

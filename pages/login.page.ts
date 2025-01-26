@@ -13,9 +13,9 @@
         constructor(page: Page) {
             this.page = page;
             
-            this.emailInput = this.page.locator('#input-0');
-            this.passwordInput = this.page.locator('#input-2');
-            this.loginButton = this.page.locator('.v-btn');
+            this.emailInput = this.page.locator('[datatest = "login-email_input"]');
+            this.passwordInput = this.page.locator('[datatest = "login-password_input"]');
+            this.loginButton = this.page.locator('[datatest = "login-submit_btn"]');
             this.mainErrorMessage = this.page.locator('[datatest = "login-error_message"]');
             this.inputFieldErrorMessage = this.page.locator('.v-messages__message');
             this.keepSignedInCheckbox = this.page.locator('[aria-label="Keep signed in"]');
@@ -24,7 +24,6 @@
         async login(email: string, password: string): Promise<void> {
             await this.emailInput.fill(email);
             await this.passwordInput.fill(password);
-            //locator unda shevcvalo
             
             if(await this.isLogInBtnDisabled()) {
                 console.warn("Log in button is disabled.skipping this action.");
