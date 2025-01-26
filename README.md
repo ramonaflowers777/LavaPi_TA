@@ -3,16 +3,13 @@
 
 ## Overview
 
-The suite includes both valid and invalid test cases, leveraging Playwright, TypeScript, and the Page Object Model (POM) for improved maintainability and scalability.
+The suite includes both valid and invalid test cases, leveraging Playwright, TypeScript, and the Page Object Model (POM).
 
 ## Features
 - **Page Object Model(POM)**: The LoginPage class encapsulates all login page interactions, making the tests more maintainable.
-- **Typescript**: Adds type safety and improves code maintainability.
 - **Valid Login**: Tests for successful login using valid credentials, as well as, testing "Keep me signed in" functionality and handling email addresses in a case-insensitive manner.
 - **Invalid Login**: Tests for handling various invalid login scenarios such as empty fields, incorrect email format, invalid password formats, unregistered users.
-- **Error Handling**: Proper validation of error messages for each failure scenario.
 - **Parallel Test Execution**: Tests are designed to run in parallel, significantly reducing execution time.
-- **Authentication Once Per Worker**: Each worker authenticates once and reuses the authenticated state across tests, improving performance and isolation.
 
 - **Code Structure**: 
   - pages/login.page.ts: Page Object Model for login functionality.
@@ -27,31 +24,29 @@ The test suite is configured to run on the following browsers:
 - **Firefox**
 - **WebKit** (Safari)
 
-## Test Data
-The test data is stored in `loginData.json` and follows the `UserData` interface defined in `type.ts`. Each test case includes:
-
-- **email**: The email address for the login attempt.
-- **password**: The password for the login attempt.
-- **expectedResult**: Whether the login should succeed (`success`) or fail (`failure`).
-- **errorMessage**: The expected error message for failed login attempts.
-- **type**: Additional context for the test case (e.g., "Keep signed in", "Incorrect password format").
-
 ### Getting Started
 
-1. **Clone the repository**:
-   - git clone "https://github.com/ramonaflowers777/LavaPi_TA"
-   - cd LavaPi_TA
+1. **Installation**:
+```sh
+git clone git@github.com:ramonaflowers777/LavaPi_TA.git
+```
 
 2. **Install dependencies**:
-   - npm install
+```sh
+cd ./LavaPi_TA
+npm install
+```
 
 3. **Run the tests**:
-   - npx playwright test
+```sh
+npx playwright test
+```
 
 4. **View the test report**:
-   - npx playwright show-report
+```sh
+npx playwright show-report
+```
    
-
 ## Findings and Recommendations
 During testing, the following observations were made regarding password validation:
 
