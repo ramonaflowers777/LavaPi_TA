@@ -23,4 +23,9 @@
 
 
 
-
+- **TC007**: Login with a password that doesn’t contain a number  
+  **Steps:**  
+  1. Enter a valid email.  
+  2. Enter a password without numbers (e.g., "Abcdefgh!").  
+  3. Click the login button.  
+  **Expected Result:** Error message: "Incorrect username or password."

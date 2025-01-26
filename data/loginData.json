@@ -41,21 +41,21 @@
       },
       { 
         "email": "Gabedavanini93@gmail.com",
-        "password": "123",
+        "password": "1234567",
         "expectedResult": "failure",
         "errorMessage": "Incorrect username or password.",
         "type": "Incorrect password format"
       },
       { 
         "email": "Gabedavanini93@gmail.com",
-        "password": "abcdefg123",
+        "password": "Abcdefg123",
         "expectedResult": "failure",
         "errorMessage": "Incorrect username or password.",
         "type":"Incorrect password format"
       },
       { 
         "email": "Gabedavanini93@gmail.com",
-        "password": "Abcdefgh",
+        "password": "abcdefgh123",
         "expectedResult": "failure",
         "errorMessage": "Incorrect username or password.",
         "type":"Incorrect password format"
