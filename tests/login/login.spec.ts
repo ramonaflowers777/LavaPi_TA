@@ -1,7 +1,7 @@
-import {test, expect, Page} from "@playwright/test";
-import { LoginPage } from "../../pages/login.page";
-import { testData } from "../../data/testdata";
-import { UserData } from "../../data/type";
+import {test, expect, Page} from '@playwright/test';
+import { LoginPage } from '../../pages/login.page';
+import { testData } from '../../data/testdata';
+import { UserData } from '../../data/type';
 
 test.describe('Valid Login tests', () => {
     let loginPage: LoginPage;
@@ -35,7 +35,7 @@ test.describe('Valid Login tests', () => {
                     }
 
                     if(user.password === "") {
-                        await loginPage.fillAndClearPasswordInput("testpassword");
+                        await loginPage.fillAndClearPasswordInput('testpassword');
 
                         const emptyPassErrMsg: string | null = await loginPage.getErrorMessageByText('Password is required')
                         expect(emptyPassErrMsg).toBe(user.errorMessage);
@@ -50,7 +50,6 @@ test.describe('Valid Login tests', () => {
                     await loginPage.login(user.email, user.password);
 
                     const inncorectEmailErrMsg: string | null = await loginPage.getErrorMessageByText('Enter valid Email address');
-                    console.log(inncorectEmailErrMsg);
                     expect(inncorectEmailErrMsg).toBe(user.errorMessage);
                     
                     const isDisabled: boolean | null = await loginPage.isLogInBtnDisabled();
