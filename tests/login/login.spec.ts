@@ -2,6 +2,7 @@ import {test, expect, Page} from '@playwright/test';
 import { LoginPage } from '../../pages/login.page';
 import { testData } from '../../data/testdata';
 import { UserData } from '../../data/type';
+import { config } from 'process';
 
 test.describe('Valid Login tests', () => {
     let loginPage: LoginPage;
@@ -19,7 +20,7 @@ test.describe('Valid Login tests', () => {
                 if(!user.type) {
             test(`Valid login for registered user ${user.email}`, async ({ page }: { page: Page}) => {
                 await loginPage.login(user.email, user.password);
-                await expect(page).toHaveURL('/');
+                await expect(page).toHaveURL('https://rapidreach-develop.magedge.com/');
             }); 
         }
         else {
