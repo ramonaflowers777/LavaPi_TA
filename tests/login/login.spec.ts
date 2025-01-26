@@ -1,4 +1,5 @@
 import {test, expect, Page} from '@playwright/test';
+
 import { LoginPage } from '../../pages/login.page';
 import { testData } from '../../data/testdata';
 import { UserData } from '../../data/type';
@@ -41,12 +42,12 @@ test.describe('Valid and Invalid Log in tests', () => {
                 test(`invalid login with empty fields (email: '${user.email}', password: '${user.password}')`, async () => {
                     await loginPage.login(user.email, user.password);
 
-                    if(user.email === "") {
+                    if(user.email === '') {
                         const emptyEmailErrMsg: string | null = await loginPage.getErrorMessageByText('Email is required');
                         expect(emptyEmailErrMsg).toBe(user.errorMessage);
                     }
 
-                    if(user.password === "") {
+                    if(user.password === '') {
                         await loginPage.fillAndClearPasswordInput('testpassword');
 
                         const emptyPassErrMsg: string | null = await loginPage.getErrorMessageByText('Password is required')
@@ -85,6 +86,7 @@ test.describe('Valid and Invalid Log in tests', () => {
                 expect(errMessage).toMatch(/Incorrect username or password\.?|Password attempts exceeded\.?/);
             });
         };
-        })
-    })
-})})
+        });
+    });
+});
+});
