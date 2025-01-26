@@ -7,8 +7,8 @@ This project is a test suite for validating the login functionality of a web app
 
 ## Features
 - **Page Object Model(POM)**: The LoginPage class encapsulates all login page interactions, making the tests more maintainable.
-- **TYpescript**: Tests for handling various invalid login scenarios such as empty fields, incorrect email format, invalid password formats, unregistered users.
-- **Valid Login**: Tests for successful login using valid credentials.
+- **Typescript**: Adds type safety and improves code maintainability.
+- **Valid Login**: Tests for successful login using valid credentials, as well as, testing "Keep me signed in" functionality and handling email addresses in a case-insensitive manner.
 - **Invalid Login**: Tests for handling various invalid login scenarios such as empty fields, incorrect email format, invalid password formats, unregistered users.
 - **Error Handling**: Proper validation of error messages for each failure scenario.
 - **Parallel Test Execution**: Tests are designed to run in parallel, significantly reducing execution time.
@@ -42,7 +42,7 @@ The test data is stored in `loginData.json` and follows the `UserData` interface
    - npx playwright test
 
 4. **View the test report**:
-   - npx allure open
+   - npx playwright show-report
    
 
 ## Findings and Recommendations
@@ -75,6 +75,6 @@ To further enhance the test suite, **authentication once per worker** has been i
 2. **Isolation**: Each worker uses a unique account, preventing conflicts between tests.
 3. **Reusability**: The authenticated state is reused across all tests in the same worker.
 
-Since this test suite only covers log in functionality, it is not used, but for further enhancements this approach
+- Since this test suite only covers log in functionality, it is not used, but for further enhancements this approach
 is recommended because authenticated state is reused across all tests in the same worker.
 ---
