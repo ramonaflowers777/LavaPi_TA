@@ -16,10 +16,25 @@ test.describe('Valid Login tests', () => {
 
     test.describe('Valid Log in Tests', () => {
             validUsers.forEach((user) => {
+                if(!user.type) {
             test(`Valid login for registered user ${user.email}`, async ({ page }: { page: Page}) => {
                 await loginPage.login(user.email, user.password);
-                await expect(page).toHaveURL('https://rapidreach-develop.magedge.com/');
+                await expect(page).toHaveURL('/');
             }); 
+        }
+        else {
+            test(`Validation of Keep signed in functionality with ${user.email} and ${user.password}`, async ({ page }: { page: Page}) => {
+                await loginPage.checkKeepSignedIn();
+                await loginPage.login(user.email, user.password);
+                
+                await page.close();
+
+                const newPage: Page = await page.context().newPage();
+                newPage.goto('/login');
+
+                await expect(newPage).toHaveURL('https://rapidreach-develop.magedge.com/');
+            });
+        };
         })
     })
 

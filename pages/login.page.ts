@@ -8,6 +8,7 @@
         private readonly loginButton: Locator;
         private readonly mainErrorMessage: Locator;
         private readonly inputFieldErrorMessage: Locator;
+        private readonly keepSignedInCheckbox: Locator;
             
         constructor(page: Page) {
             this.page = page;
@@ -17,6 +18,7 @@
             this.loginButton = this.page.locator('.v-btn');
             this.mainErrorMessage = this.page.locator('[datatest = "login-error_message"]');
             this.inputFieldErrorMessage = this.page.locator('.v-messages__message');
+            this.keepSignedInCheckbox = this.page.locator('[aria-label="Keep signed in"]');
         }
 
         async login(email: string, password: string): Promise<void> {
@@ -47,5 +49,9 @@
 
         async isLogInBtnDisabled(): Promise<boolean | null> {
             return await this.loginButton.isDisabled();
+        }
+
+        async checkKeepSignedIn(): Promise<void> {
+            return await this.keepSignedInCheckbox.check();
         }
     }

@@ -9,6 +9,12 @@
         "password": "Gabedava123@",
         "expectedResult": "success"
       },
+      {
+        "email": "Gabedavanini93@gmail.com",
+        "password": "Gabedava123@",
+        "expectedResult": "success",
+        "type": "Keep signed in"
+      },
       { 
         "email": "gabedavanini93@gmail.com",
         "password": "incorrectPassword",

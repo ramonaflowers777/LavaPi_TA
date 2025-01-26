@@ -16,7 +16,7 @@ export default defineConfig({
     headless: true,
     actionTimeout: 0,
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: "https://rapidreach-develop.magedge.com",
+    baseURL: 'https://rapidreach-develop.magedge.com',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: "on-first-retry",
