@@ -5,6 +5,11 @@
 
 The suite includes both valid and invalid test cases, leveraging Playwright, TypeScript, and the Page Object Model (POM).
 
+## Test Cases
+
+For detailed test cases, refer to the [Test Cases README](./test-cases.md).
+
+---
 ## Features
 - **Page Object Model(POM)**: The LoginPage class encapsulates all login page interactions, making the tests more maintainable.
 - **Valid Login**: Tests for successful login using valid credentials, as well as, testing "Keep me signed in" functionality and handling email addresses in a case-insensitive manner.
