@@ -7,7 +7,7 @@ The suite includes both valid and invalid test cases, leveraging Playwright, Typ
 
 ## Test Cases
 
-Test cases are in[`test-cases.md file`](./test-cases.md).
+To view test cases,visit [`test-cases.md file `](./test-cases.md).
 
 ---
 ## Features
