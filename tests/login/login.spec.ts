@@ -26,7 +26,7 @@ test.describe('Valid Login tests', () => {
     test.describe('Invalid Log in Tests', () => {
         invalidUsers.forEach((user) => {
             if( user.type === 'Empty fields' ) {
-                test(`invalid login with empty fields (email: '${user.email}', password: '${user.password}')`, async ({page}: {page: Page}) => {
+                test(`invalid login with empty fields (email: '${user.email}', password: '${user.password}')`, async () => {
                     await loginPage.login(user.email, user.password);
 
                     if(user.email === "") {
@@ -46,7 +46,7 @@ test.describe('Valid Login tests', () => {
                 })}
 
              if( user.type === 'Incorrect email format' ) {
-                test(`Validation for incorrect email format (email: '${user.email}')`, async ({page}: {page: Page}) => {
+                test(`Validation for incorrect email format (email: '${user.email}')`, async () => {
                     await loginPage.login(user.email, user.password);
 
                     const inncorectEmailErrMsg: string | null = await loginPage.getErrorMessageByText('Enter valid Email address');
@@ -57,7 +57,7 @@ test.describe('Valid Login tests', () => {
                     expect(isDisabled).toBeTruthy();
             })}
 
-            if( !user.type ) { test(`Invalid Log in with ${user.email} and ${user.password}` , async ({page}: { page: Page }) => {
+            if( !user.type ) { test(`Invalid Log in with ${user.email} and ${user.password}` , async () => {
                 await loginPage.login(user.email, user.password);
                 
                 const errMessage: string | null =  await loginPage.getMainErrorMessageByText();
