@@ -39,7 +39,7 @@
             await this.passwordInput.clear();
         }
 
-        async getMainErrorMessageByText(): Promise<string | null> {
+        async getMainErrorMessage(): Promise<string | null> {
             return await this.mainErrorMessage.textContent();
         }
 

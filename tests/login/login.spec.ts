@@ -2,9 +2,8 @@ import {test, expect, Page} from '@playwright/test';
 import { LoginPage } from '../../pages/login.page';
 import { testData } from '../../data/testdata';
 import { UserData } from '../../data/type';
-import { config } from 'process';
 
-test.describe('Valid Login tests', () => {
+test.describe('Valid and Invalid Log in tests', () => {
     let loginPage: LoginPage;
 
     test.beforeEach(async ({page}: { page: Page}) => {
@@ -17,29 +16,24 @@ test.describe('Valid Login tests', () => {
 
     test.describe('Valid Log in Tests', () => {
             validUsers.forEach((user) => {
-                if(!user.type) {
-            test(`Valid login for registered user ${user.email}`, async ({ page }: { page: Page}) => {
+            test(`Valid login ${user.type ? 'with "Keep signed in"' : ''} for registered user ${user.email} ${user.password}`, async ({ page }: { page: Page}) => {
+                if ( user.type === 'Keep signed in') {
+                    await loginPage.checkKeepSignedIn();
+                }
+
                 await loginPage.login(user.email, user.password);
                 await expect(page).toHaveURL('/');
-            }); 
-        }
-        else {
-            test(`Validation of Keep signed in functionality with ${user.email} and ${user.password}`, async ({ page }: { page: Page}) => {
-                await loginPage.checkKeepSignedIn();
-                await loginPage.login(user.email, user.password);
-                await page.waitForURL('/');
                 
-                await page.close();
+                if ( user.type === 'Keep signed in' ) {
+                    await page.close();
+                    const newPage: Page = await page.context().newPage();
+                    await newPage.goto('/login');
+                    await newPage.waitForURL('/');
 
-                const newPage: Page = await page.context().newPage();
-                await newPage.goto('https://rapidreach-develop.magedge.com/login');
-                await newPage.waitForURL('/');
-
-                await expect(newPage).toHaveURL('/');
-            });
-        };
-        })
-    })
+                    await expect(newPage).toHaveURL('/');
+                };
+        });
+    });
 
     test.describe('Invalid Log in Tests', () => {
         invalidUsers.forEach((user) => {
@@ -74,14 +68,23 @@ test.describe('Valid Login tests', () => {
                     expect(isDisabled).toBeTruthy();
             })}
 
-            if( !user.type ) { test(`Invalid Log in with ${user.email} and ${user.password}` , async () => {
+            if( user.type === 'Incorrect password format' ) {
+                test(`Validation for incorrect password format (password: '${user.password}')`, async () => {
+                    await loginPage.login(user.email, user.password);
+
+                    const incorrectCredentialsErrMsg: string | null = await loginPage.getMainErrorMessage();
+                    expect(incorrectCredentialsErrMsg).toBe(user.errorMessage);
+                })
+            }
+
+            if( !user.type ) { test(`Invalid Log in with unregistered users ( ${user.email} and ${user.password} )` , async () => {
                 await loginPage.login(user.email, user.password);
                 
-                const errMessage: string | null =  await loginPage.getMainErrorMessageByText();
+                const errMessage: string | null =  await loginPage.getMainErrorMessage();
 
                 expect(errMessage).toMatch(/Incorrect username or password\.?|Password attempts exceeded\.?/);
             });
         };
         })
     })
-})
+})})

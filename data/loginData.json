@@ -40,16 +40,32 @@
         "errorMessage": "Incorrect username or password."
       },
       { 
-        "email": "test@test.com",
+        "email": "Gabedavanini93@gmail.com",
         "password": "123",
         "expectedResult": "failure",
-        "errorMessage": "Incorrect username or password."
+        "errorMessage": "Incorrect username or password.",
+        "type": "Incorrect password format"
       },
       { 
-        "email": "test@test.com",
+        "email": "Gabedavanini93@gmail.com",
         "password": "abcdefg123",
         "expectedResult": "failure",
-        "errorMessage": "Incorrect username or password."
+        "errorMessage": "Incorrect username or password.",
+        "type":"Incorrect password format"
+      },
+      { 
+        "email": "Gabedavanini93@gmail.com",
+        "password": "Abcdefgh",
+        "expectedResult": "failure",
+        "errorMessage": "Incorrect username or password.",
+        "type":"Incorrect password format"
+      },
+      { 
+        "email": "Gabedavanini93@gmail.com",
+        "password": "Abcdefgh!",
+        "expectedResult": "failure",
+        "errorMessage": "Incorrect username or password.",
+        "type":"Incorrect password format"
       },
       { 
         "email": "",
