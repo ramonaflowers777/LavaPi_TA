@@ -16,18 +16,8 @@
 | TC007  | Login with empty email and correct password format   | 1. Enter empty email<br>2. Enter correct password format "Somepassword123@"<br>3. Click login button                   | Error message: "Email is required" is displayed     |
 | TC008  | Login with valid email format and empty password  | 1. Enter valid email format <br>2. Enter some text in password field<br>4.Clear password input<br>5.Click login button                  | Error message: "Password is required" is displayed     |
 | TC009  | Login with incorrect email format and valid password   | 1. Enter email with incorrect format(e.g test@test)<br>2. Enter correct password format "Somepassword123@"<br>3. Click login button                   | Error message: "Enter valid Email address" is displayed  and "Sign in" button is disabled|
-
 | TC010  | Login with a password with less than 8 characters | 1. Enter password with less than eigth characters(e.g 1234567,)<br>2. Enter email with correct format "Gabedavanini93@gmail.com"<br>3. Click login button                   | Error message: Incorrect username or password.
-
 | TC011  | Login with a password missing special character | 1. Enter password that doesn't have speacial character(e.g Abcdefg123)<br>2. Enter email with correct format "Gabedavanini93@gmail.com"<br>3. Click login button                   | Error message: Incorrect username or password.
-
-| TC012  | Login with a password missing a capital letter | 1. Enter password that doesn't have a capital letter(e.g abcdefgh123!)<br>2. Enter email with correct format "Gabedavanini93@gmail.com"<br>3. Click login button                   | Error message: Incorrect username or password.
-
-| TC012  | Login with a password missing a capital letter | 1. Enter password that doesn't have a capital letter(e.g abcdefgh123!)<br>2. Enter email with correct format "Gabedavanini93@gmail.com"<br>3. Click login button                   | Error message: Incorrect username or password.
-
-
-| TC012  | Login with a password missing a capital letter | 1. Enter password that doesn't have a capital letter(e.g abcdefgh123!)<br>2. Enter email with correct format "Gabedavanini93@gmail.com"<br>3. Click login button                   | Error message: Incorrect username or password.
-
 | TC013  | Login with a password missing a number | 1. Enter password that doesn't have number(e.g Abcdefgh!)<br>2. Enter email with correct format "Gabedavanini93@gmail.com"<br>3. Click login button                   | Error message: Incorrect username or password.
 
 
